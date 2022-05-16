@@ -1,0 +1,98 @@
+<!--
+ * @Description: 
+ * @Author: mzr
+ * @Date: 2021-11-10 15:49:03
+ * @LastEditTime: 2022-03-10 15:25:03
+ * @LastEditors: mzr
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      href="./easyui/themes/default/easyui.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./easyui/themes/icon.css" /> -->
+
+    <style>
+      .easyui-panel {
+        /* 三角 */
+        /* width:0;
+        height:0;
+        border-bottom:100px solid red;
+        border-left:50px solid  transparent;
+        border-right:50px solid transparent; */
+        width: 800px;
+        text-align: center;
+        flex-wrap: wrap;
+      }
+      .easyui-panel .test {
+        /* 椭圆 宽度高度一半 */
+        width: 40px;
+        height: 20px;
+        background-color: red;
+        border-left: 20px solid transparent;
+        border-top: 20px solid red;
+        border-radius: 50%;
+        /* border-radius: 20px/10px; */
+        clip-path: polygon(25% 20%, 50% 50%, 75% 100%, 0% 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="p" class="easyui-panel">
+      <!-- <div class="test"></div> -->
+      <canvas width="250" height="250" id="blue"></canvas>
+      <canvas width="800" height="200" id="mycanvas"></canvas>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/1.10.0/jquery.min.js"></script>
+    <script>
+      window.onload = function () {
+        // 路径
+        var ctx = document.getElementById("blue").getContext("2d");
+        var lineJoin = ["round", "bevel", "miter"];
+        ctx.lineWidth = 10;
+        // ctx.translate(10, 100); // 改变原点
+        // ctx.scale(2, -1); // 缩放因子 0零界点
+
+        // for (var i = 0; i < lineJoin.length; i++) {
+        //   ctx.lineJoin = lineJoin[i];
+        //   ctx.beginPath();
+        //   ctx.moveTo(-5, 5 + i * 40);
+        //   ctx.lineTo(35, 45 + i * 40);
+        //   ctx.lineTo(75, 5 + i * 40);
+        //   ctx.lineTo(115, 45 + i * 40);
+        //   ctx.lineTo(155, 5 + i * 40);
+        //   ctx.stroke();
+        // }
+
+        ctx.beginPath();
+        ctx.moveTo(125, 200);
+        ctx.lineTo(30, 59);
+        ctx.lineTo(60, 59);
+        ctx.stroke();
+
+        // 图片
+        var otd = document.getElementById("mycanvas").getContext("2d");
+        var img = new Image();
+        img.src = "https://mdn.mozillademos.org/files/5397/rhino.jpg";
+        otd.drawImage(img, 0, 0);
+        // draw();
+        // function draw() {
+        //   // otd.beginPath();
+        //   // otd.moveTo(30, 96);
+        //   // otd.lineTo(70, 66);
+        //   // otd.lineTo(103, 76);
+        //   // otd.lineTo(170, 15);
+        //   // otd.stroke();
+        // }
+      };
+    </script>
+  </body>
+</html>

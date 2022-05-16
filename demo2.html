@@ -1,0 +1,104 @@
+<!--
+ * @Description: 
+ * @Author: mzr
+ * @Date: 2021-11-02 10:07:34
+ * @LastEditTime: 2021-11-10 14:54:04
+ * @LastEditors: mzr
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>echarts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.js"></script>
+    
+    <div id="main"></div>
+
+
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(
+        document.getElementById('main'),
+      );
+
+      // 指定图表的配置项和数据 
+      var option = {
+      
+        title:{
+          text:"Echarts Test",
+          left:"50%",
+          textStyle:{
+            fontSize:30,
+            color:"rgba(61, 20, 20, 1)",
+            fontWeight:"bolder",
+          }
+        },
+        grid:{
+          left:"30%",
+          top:"30%",
+        },
+        // 提示框
+        tooltip:{
+          show:true,
+          trigger:'axis',
+          formatter:'{a}:{c}',
+          padding:[5,10,10]
+        },
+        // 图例
+        legend: {
+          top: "20%",
+        },
+        xAxis: [
+          {
+            type:'category',
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+
+          },
+          // {
+          //   type: 'category',
+          //   data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          // },
+        ],
+        yAxis: [
+          {
+            type:'value'
+          }
+        ],
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+          },
+          {
+            data: [150, 230, 224, 218, 135, 147, 260],
+            type: 'line',
+            // areaStyle: {}, // 折线面积
+            smooth: true, // 平滑折线
+            emphasis: {
+              focus: 'series'
+            }, // 堆叠面积
+          },
+
+        ]
+      };
+      
+      // 加载动态数据  ajax
+    
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+      // 容器大小
+      myChart.resize(
+        {
+          width:1200,
+          height:500,
+        }
+      );
+     
+    </script>
+  </body>
+</html>

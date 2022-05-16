@@ -1,0 +1,111 @@
+<!--
+ * @Description: 
+ * @Author: mzr
+ * @Date: 2021-11-01 11:03:26
+ * @LastEditTime: 2021-11-02 09:58:43
+ * @LastEditors: mzr
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fullPage.js/favico.js</title>
+
+    <link rel="icon" href="./mushroom.ico" />
+    <link
+    href="https://cdn.bootcdn.net/ajax/libs/fullPage.js/3.1.2/fullpage.css"
+    rel="stylesheet"
+    />
+    <style>
+      .button_style { border-color: #ccc; color: #333;background-color: #fff;}
+    </style>
+
+  </head>
+  <body>
+    <div id="fullpage">
+      <div class="section">
+        <h3 class="hide">第一屏</h3>
+        <p>fullPage.js — 基本演示</p>
+        <p>
+          <button class="button_style editIconNumberBtn" onclick="editIconNumber(true)">+1</button>
+          <button class="button_style" onclick="editIconNumber(false)">-1</button>
+        </p>
+      </div>
+      <div class="section">Some section1</div>
+      <div class="section">
+        <h3>第一行</h3>
+        <h3>第二行</h3>
+        <h3>第三行</h3>
+        <h3>第四行</h3>
+
+      </div>
+      <div class="section">Some section3</div>
+      <div class="section">Some section4</div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/fullPage.js/3.1.2/fullpage.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/favico.js/0.3.9/favico.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // id 选择器
+        $("#fullpage").fullpage({
+          navigation: true,
+          sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE']
+        });
+      });
+      var favicon=new Favico({
+        animation:'slide',
+        bgColor:"#000",
+        textColor:"#fff",
+        position:'up'
+      });
+      
+      var iconNumber = 3
+
+      function editIconNumber(val){
+        if(val){
+          iconNumber ++
+        }else  {
+          iconNumber --
+        }
+
+        favicon.badge(iconNumber);
+      }
+
+      // class选择器 
+      $('.editIconNumberBtn').click(function (){
+        
+          // document.getElementsByClassName('hide')[0].style.display = document.getElementsByClassName('hide')[0].style.display === 'none'?'block':'none'
+        
+        // console.log(document.getElementsByClassName('hide')[0].style.display = 'none')
+        // $('.hide').toggle()  
+
+        
+
+
+      })
+      // 元素选择器
+      $('button').click(function() {
+        // console.log($('h3'))
+        $('h3').hide()
+      })
+      // this 当前元素
+      $('button').hover(function() {
+        $(this).css("background-color","rgba(27, 188, 155)")
+      })
+      /**
+       * toggle() 方法来切换 hide() 和 show() 方法
+       * toggle() 方法来切换 fadeIn() 和 fadeOut() 方法
+       * 
+       * 
+       * 
+       * */ 
+
+
+    </script>
+  </body>
+</html>
